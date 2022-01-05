@@ -1,27 +1,32 @@
 # LPD Attendance system
 
 
-# サイト概要
+### サイト概要
 株式会社LPDの従業員が利用する勤怠管理システム
 
-*サイトテーマ*
+#### サイトテーマ
+従業員の勤怠の管理
 
+#### テーマを選んだ理由
+ポートフォリオ 作成では現場のことを考え実際に困っている人の問題解決をしたいと考えました。
+そこで、知り合いの営業会社の社長が従業員の勤怠をLINEで管理していて不便だとお話があったので、
+勤怠を一括で管理できるシステムを提案した所、お喜びいただけたので今回このテーマにする運びとなりました。
 
+#### ターゲットユーザー
+株式会社LPDの従業員、管理者
 
-* Ruby version
+#### 主な利用シーン
+従業員が出勤した際や退勤した際は勿論のこと、
+管理者が従業員が稼働した日数を把握するとき。
+また、社長が給与を支払う際にも活用できます。
 
-* System dependencies
+## 設計書
 
-* Configuration
+## チャレンジ要素一覧
 
-* Database creation
+## 開発環境
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* 言語：HTML,CSS,JavaScript,Ruby
+* フレームワーク :Ruby on Rails
+* JSライブラリー：jQuery
+* IDE:Cloud9
