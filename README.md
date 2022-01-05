@@ -1,9 +1,12 @@
-# README
+# LPD Attendance system
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+# サイト概要
+株式会社LPDの従業員が利用する勤怠管理システム
+
+*サイトテーマ*
+
+
 
 * Ruby version
 
