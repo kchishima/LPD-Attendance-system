@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_12_173010) do
+ActiveRecord::Schema.define(version: 2022_01_13_105556) do
+
+  create_table "attendance_informations", force: :cascade do |t|
+    t.integer "member_id"
+    t.datetime "time_in"
+    t.datetime "time_out"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_attendance_informations_on_member_id"
+  end
 
   create_table "members", force: :cascade do |t|
     t.string "email"

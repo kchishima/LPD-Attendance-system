@@ -1,0 +1,32 @@
+<% if member_signed_in? %>
+    <%= current_member.first_name %>
+<% end %>
+
+<h2 class="text-center">現在時刻</h2>
+<h3 id="RealtimeClockArea" class="text-center"></h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mb-3 mb-md-0">
+            <%= link_to '出勤', time_in_path, class: 'btn btn-primary btn-block' %>
+        </div>
+        <div class="col-md-6">
+            <%= link_to '退勤', time_out_path, class: 'btn btn-danger btn-block' %>
+        </div>
+    </div>
+    <hr>
+    <% @ais.each do |ai| %>
+        <div class="row mb-2 mb-md-0">
+            <div class="col-md-2">出勤</div>
+            <div class="col-md-4"><small><%= l ai.time_in.in_time_zone('Tokyo'), format: :original %></small></div>
+            <div class="col-md-2">退勤</div>
+            <div class="col-md-4">
+                <% unless ai.time_out.nil? %>
+                    <small><%= l ai.time_out.in_time_zone('Tokyo'), format: :original %></small>
+                <% else %>
+                    <span class="text-danger">打刻なし</span>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+</div>

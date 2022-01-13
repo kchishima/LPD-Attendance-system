@@ -1,0 +1,2 @@
+module AttendanceInformations　newHelper
+end

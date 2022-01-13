@@ -7,23 +7,46 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
   </head>
 
   <body>
-     <p class="notice"><%= notice %></p>
-     <p class="alert"><%= alert %></p>
+
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" href="#">LPD Attendance system</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
         <% if member_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_member_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_member_session_path %>
-      </li>
-    <% end %>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: 'nav-link' %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "新規登録", new_member_registration_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログイン", new_member_session_path, class: 'nav-link' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+
+    <div class="container">
+      <% unless flash[:notice].blank? %>
+        <p class="notice"><%= flash[:notice] %></p>
+      <% end %>
+      <% unless flash[:alart].blank? %>
+        <p class="alert"><%= flash[:alert] %></p>
+      <% end %>
+    </div>
+
     <%= yield %>
 
   </body>
