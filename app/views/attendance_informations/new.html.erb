@@ -1,6 +1,7 @@
 <% if member_signed_in? %>
     <%= current_member.first_name %>
 <% end %>
+ <%= render 'members/header'%>
 
 <h2 class="text-center">現在時刻</h2>
 <h3 id="RealtimeClockArea" class="text-center"></h3>

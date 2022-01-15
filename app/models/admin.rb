@@ -1,5 +1,4 @@
-class Member < ApplicationRecord
-  has_many :attendance_informations
+class Admin < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

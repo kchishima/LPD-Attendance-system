@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :admins
   devise_for :members
+  namespace :admins do
+  resources :members, only: [:show,:index]
+  end
   resources :members, only: [:show,:index]
   root to: "homes#index"
 
@@ -14,8 +18,8 @@ Rails.application.routes.draw do
   # patch '/attendance/:id' => 'attendance_informations#update'
   # get '/attendance_informations' => 'attendance_informations#show'
 
-  # resources :work_scheduleds,only: [:show,:index]
-  # resources :attendance_applications,only: [:index,:show,:new,:create,:edit,:update]
+  resources :work_scheduleds,only: [:show,:index]
+  resources :attendance_applications,only: [:index,:show,:new,:create,:edit,:update]
   resources :attendance_informations
 
 end
