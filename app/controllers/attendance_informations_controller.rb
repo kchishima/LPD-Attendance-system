@@ -1,5 +1,10 @@
 class AttendanceInformationsController < ApplicationController
   before_action :authenticate_member!
+
+  def index
+    @ais = AttendanceInformation.where(member_id: current_member.id, status: true)
+  end
+
   def new
     @ais = AttendanceInformation.where(member_id: current_member.id).reverse.take(5)
   end

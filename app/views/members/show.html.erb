@@ -1,18 +1,79 @@
-<div>
-  <h3><%= @member.email %></h3>
-</div>
-<div>
-  <h3><%= @member.first_name %></h3>
-</div>
-<div>
-   <h3><%= @member.last_name %></h3>
-</div>
-<div>
-  <h3><%= @member.last_name_kana %></h3>
-</div>
-<div>
-  <h3><%= @member.first_name_kana %></h3>
-</div>
-<div>
-   <h3><%= @member.address %></h3>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      登録日
+    </div>
+    <div class="col-md-10">
+      <%= l @member.created_at.in_time_zone('Tokyo'), format: :original %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      E-mail
+    </div>
+    <div class="col-md-10">
+      <%= @member.email %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      First Name
+    </div>
+    <div class="col-md-4">
+      <%= @member.first_name %>
+    </div>
+    <div class="col-md-2">
+      Last Name
+    </div>
+    <div class="col-md-4">
+      <%= @member.last_name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      First Name Kana
+    </div>
+    <div class="col-md-4">
+      <%= @member.first_name_kana %>
+    </div>
+    <div class="col-md-2">
+      Last Name Kana
+    </div>
+    <div class="col-md-4">
+      <%= @member.last_name_kana %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      Address
+    </div>
+    <div class="col-md-10">
+      <%= @member.address %>
+    </div>
+  </div>
+
+  <h4 class="mt-3">Change Password</h4>
+  <%= form_with model: @member_new, url: member_path, method: :patch, local: :true do |f| %>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-3">
+          <%= f.label :password %>
+        </div>
+        <div class="col-md-9">
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-3">
+          <%= f.label :password_confirmation %>
+        </div>
+        <div class="col-md-9">
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <%= f.submit 'Update Password', class: 'btn btn-danger' %>
+  <% end %>
 </div>

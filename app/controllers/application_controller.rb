@@ -3,10 +3,18 @@ class ApplicationController < ActionController::Base
 
   private
   def after_sign_in_path_for(resource)
-    if resource == Member
-      new_attendance_information_path
-    else
-      admins_members_path
+    # binding.irb
+    # if resource == Member
+    #   new_attendance_information_path
+    # else
+    #  members_path
+    # end
+
+    case resource
+      when Admin
+        admins_members_path
+      when Member
+        new_attendance_information_path
     end
   end
 

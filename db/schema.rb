@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2022_01_13_203146) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "member_id"
     t.string "last_name"
     t.string "first_name"
     t.string "last_name_kana"
@@ -28,6 +29,7 @@ ActiveRecord::Schema.define(version: 2022_01_13_203146) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["member_id"], name: "index_admins_on_member_id", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
@@ -35,6 +37,7 @@ ActiveRecord::Schema.define(version: 2022_01_13_203146) do
     t.integer "member_id"
     t.datetime "time_in"
     t.datetime "time_out"
+    t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_attendance_informations_on_member_id"
@@ -46,6 +49,7 @@ ActiveRecord::Schema.define(version: 2022_01_13_203146) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "member_id", null: false
     t.string "last_name"
     t.string "first_name"
     t.string "last_name_kana"
@@ -56,6 +60,7 @@ ActiveRecord::Schema.define(version: 2022_01_13_203146) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_members_on_email", unique: true
+    t.index ["member_id"], name: "index_members_on_member_id", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 

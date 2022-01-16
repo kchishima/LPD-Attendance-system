@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Add New Member</h2>
-  <%= form_with model: @member, method: :post, local: true do |f| %>
+  <%= form_with model: @member, url: admins_members_path, method: :post, local: true do |f| %>
     <div class="form-group">
       <div class="row">
         <div class="col-md-2">

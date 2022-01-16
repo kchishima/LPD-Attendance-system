@@ -1,1 +1,29 @@
-adminのマイページ
+<div class="container">
+    <h3>メンバー一覧</h3>
+    <table class="table table-hover">
+    <%#= @member.email %>
+    <%#  binding.irb %>
+    <% if admin_signed_in? %>
+        <div class="text-right mb-3">
+            <%= link_to new_admins_member_path do %>
+                <i class="fas fa-plus-square fa-2x"></i>
+            <% end %>
+        </div>
+    <% end %>
+    <% @members.each do |member| %>
+        <tr>
+            <td><%= member.member_id %></td>
+            <td><%= member.email %></td>
+        </tr>
+    <% end %>
+
+
+    </table>
+    <!--メンバー一覧作る際に活用する。-->
+    <!--<% if  current_admin.try(:admin?) %>-->
+    <!--管理者ページです。-->
+    <!--<% else %>-->
+    <!--ユーザーページです-->
+    <!--<% end %>-->
+</div>
+

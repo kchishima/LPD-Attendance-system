@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :members
   namespace :admins do
-  resources :members, only: [:show,:index]
+    resources :members, only: [:new, :create, :index]
+    resources :attendance_informations
   end
-  resources :members, only: [:show,:index]
+  resources :members, only: [:show, :update]
+
   root to: "homes#index"
 
   get '/time_in', to: 'attendance_informations#time_in'

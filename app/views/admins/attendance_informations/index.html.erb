@@ -1,0 +1,7 @@
+<div class="container">
+  <% @ais.each do |ai| %>
+    <div>
+      <%= ai.member.member_id %> / <%= ai.time_in %> / <%= ai.time_out %> / <%= ai.status %>
+    </div>
+  <% end %>
+</div>
