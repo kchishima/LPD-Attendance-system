@@ -1,5 +1,26 @@
 <div class="container">
-    <% @ais.each do |ai| %>
-        <%= ai.time_in %>
+     <% @ais.each do |ai| %>
+    <div class="row-">
+
+        <div class="col">
+          <%= l ai.time_in.in_time_zone('Tokyo'), format: :original %>
+        </div>
+        <div class="col">
+            <%= l ai.time_out.in_time_zone('Tokyo'), format: :original %>
+        </div>
+        <div class="col">
+        <%= link_to attendance_information_path(ai) do %>
+        <%= ai.status_i18n %>
+        <% end %>
+        </div>
+        <div class="col"></div>
+    </div>
     <% end %>
+    <!--<% @ais.each do |ai| %>-->
+    <!--    <%= l ai.time_in.in_time_zone('Tokyo'), format: :original %>-->
+    <!--   <%= l ai.time_out.in_time_zone('Tokyo'), format: :original %>-->
+    <!--    <%= link_to attendance_information_path(ai) do %>-->
+    <!--    <%= ai.status_i18n %>-->
+    <!--    <% end %>-->
+    <!--<% end %>-->
 </div>

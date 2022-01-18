@@ -10,20 +10,16 @@
             <% end %>
         </div>
     <% end %>
+
     <% @members.each do |member| %>
         <tr>
             <td><%= member.member_id %></td>
+            <td><%= member.first_name + member.last_name %></td>
             <td><%= member.email %></td>
         </tr>
     <% end %>
 
 
     </table>
-    <!--メンバー一覧作る際に活用する。-->
-    <!--<% if  current_admin.try(:admin?) %>-->
-    <!--管理者ページです。-->
-    <!--<% else %>-->
-    <!--ユーザーページです-->
-    <!--<% end %>-->
 </div>
 

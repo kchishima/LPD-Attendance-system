@@ -1,0 +1,27 @@
+<div class="container">
+  <% unless @ai.approval_history.nil? %>
+<h3>理由</h3>
+  <div class="row">
+    <div class="col">
+      承認者名
+      <p><%= @ai.approval_history.admin.first_name %></p>
+      <p><%= @ai.approval_history.admin.last_name %></p>
+    </div>
+    <div class="col">
+      ステータス
+      <p><%= @ai.status_i18n %></p>
+    </div>
+    <div class="col">
+      承認理由
+      <%= simple_format(@ai.approval_history.reason) %>
+    </div>
+  </div>
+</div>
+<!--<p><%= @ai.status_i18n %></p>-->
+<!--<% unless @ai.approval_history.nil? %>-->
+<!--  <p><%= @ai.approval_history.admin.first_name %></p>-->
+<!--  <p><%= @ai.approval_history.admin.last_name %></p>-->
+
+<!--  <%= simple_format(@ai.approval_history.reason) %>-->
+<!--<% end %>-->
+<% end %>

@@ -4,7 +4,7 @@ class CreateAttendanceInformations < ActiveRecord::Migration[5.2]
     t.references :member, foreign_key: true
     t.datetime :time_in
     t.datetime :time_out
-    t.boolean :status, default: false
+    t.integer :status, default: 0
     t.timestamps
     end
   end

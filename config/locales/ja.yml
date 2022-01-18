@@ -1,4 +1,10 @@
 ja:
+  enums:
+    attendance_information:
+      status:
+        applying: "申請中"
+        approval: "承認"
+        nonapproval: "非承認"
   activerecord:
     errors:
       messages:

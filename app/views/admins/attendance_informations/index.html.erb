@@ -1,7 +1,35 @@
 <div class="container">
   <% @ais.each do |ai| %>
-    <div>
-      <%= ai.member.member_id %> / <%= ai.time_in %> / <%= ai.time_out %> / <%= ai.status %>
+
+    <div class="row mb-2">
+      <div class="col-md-3">
+        <%= "#{ai.member.first_name} #{ai.member.last_name}" %>
+      </div>
+      <div class="col-md-9">
+        <%= ai.member.member_id %>
+      </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-5">
+        <%= l ai.time_in.in_time_zone('Tokyo'), format: :original %>
+      </div>
+      <div class="col-md-5">
+        <%= l ai.time_out.in_time_zone('Tokyo'), format: :original %>
+      </div>
+      <div class="col-md-2">
+        <%= ai.status_i18n %>
+      </div>
+    </div>
+
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <% if ai.status == "applying" %>
+        <%= link_to '承認', admins_attendance_information_path(id: ai.id, status: 'approval'), class: 'btn btn-info btn-sm', method: :patch %>
+        <%= link_to '非承認', admins_attendance_information_path(id: ai.id, status: 'nonapproval'), class: 'btn btn-primary btn-sm',  method: :patch %>
+    　<% else %>
+         <%= link_to '承認待ち', admins_attendance_information_path(id: ai.id, status: 'applying'), class: 'btn btn-danger btn-sm', method: :patch %>
+  　　<% end %>
+    </div>
+    <hr>
   <% end %>
 </div>

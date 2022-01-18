@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 admins = [
-    { member_id: "A-000000", email: "admin1@example.com", password: "admin1@example.com" },
-    { member_id: "A-000001", email: "admin2@example.com", password: "admin2@example.com" },
+    { first_name: "朝田", last_name: "健一", member_id: "A-000000", email: "admin1@example.com", password: "admin1@example.com" },
+    { first_name: "Yamada", last_name: "Hanako", member_id: "A-000001", email: "admin2@example.com", password: "admin2@example.com" },
   ]
 
 admins.each do |admin|
@@ -17,6 +17,8 @@ admins.each do |admin|
   # 該当Adminがいなければ、createする
   if admin_data.nil?
     Admin.create(
+      first_name: admin[:first_name],
+      last_name: admin[:last_name],
       member_id: admin[:member_id],
       email: admin[:email],
       password: admin[:password]
