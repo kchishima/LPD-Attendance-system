@@ -6,7 +6,7 @@
           <%= l ai.time_in.in_time_zone('Tokyo'), format: :original %>
         </div>
         <div class="col">
-            <%= l ai.time_out.in_time_zone('Tokyo'), format: :original %>
+          <%= l ai.time_out.in_time_zone('Tokyo'), format: :original %>
         </div>
         <div class="col">
         <%= link_to attendance_information_path(ai) do %>
@@ -15,6 +15,8 @@
         </div>
         <div class="col"></div>
     </div>
+   　 <%= link_to "修正",edit_attendance_information_path(ai) %>
+
     <% end %>
     <!--<% @ais.each do |ai| %>-->
     <!--    <%= l ai.time_in.in_time_zone('Tokyo'), format: :original %>-->

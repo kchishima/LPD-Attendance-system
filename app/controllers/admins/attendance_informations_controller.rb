@@ -2,7 +2,7 @@ class Admins::AttendanceInformationsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @ais = AttendanceInformation.all.reverse
+    @ais = AttendanceInformation.all.page(params[:page]).per(10).order('updated_at DESC')
   end
 
   def update
@@ -11,8 +11,15 @@ class Admins::AttendanceInformationsController < ApplicationController
     if @ai.status == "applying"
       ApprovalHistory.where(attendance_information_id: @ai.id).destroy_all
       redirect_to admins_attendance_informations_path
-    else
+    elsif @ai.status == "approval"
+      if !(@ai.temp_time_in.nil? || @ai.temp_time_out.nil?)
+        @ai.update(time_in: @ai.temp_time_in, time_out: @ai.temp_time_out, temp_time_in: nil, temp_time_out: nil)
+      end
       redirect_to new_admins_attendance_information_path(ai_id: @ai.id)
+    elsif @ai.status == "nonapproval"
+      redirect_to new_admins_attendance_information_path(ai_id: @ai.id)
+    else
+      redirect_to admins_attendance_informations_path
     end
   end
 

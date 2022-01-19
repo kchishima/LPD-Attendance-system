@@ -1,5 +1,10 @@
 <div class="container">
-    <h3>メンバー一覧</h3>
+     <% if admin_signed_in? %>
+        <h2><%= "#{current_admin.first_name} #{current_admin.last_name}" %></h2>
+    <% end %>
+
+    <%= render partial: 'admins/header' %>
+    <h2>メンバー一覧</h2>
     <table class="table table-hover">
     <%#= @member.email %>
     <%#  binding.irb %>

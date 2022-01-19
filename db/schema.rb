@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_18_104743) do
+ActiveRecord::Schema.define(version: 2022_01_19_101344) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 2022_01_18_104743) do
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "temp_time_in"
+    t.datetime "temp_time_out"
     t.index ["member_id"], name: "index_attendance_informations_on_member_id"
   end
 

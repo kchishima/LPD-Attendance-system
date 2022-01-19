@@ -1,4 +1,5 @@
 <div class="container">
+
   <% @ais.each do |ai| %>
 
     <div class="row mb-2">
@@ -17,6 +18,14 @@
       <div class="col-md-5">
         <%= l ai.time_out.in_time_zone('Tokyo'), format: :original %>
       </div>
+      <% if !ai.temp_time_in.nil? %>
+      <div class="col-md-5">
+        <%= l ai.temp_time_in.in_time_zone('Tokyo'), format: :original %>
+      </div>
+      <div class="col-md-5">
+        <%= l ai.temp_time_out.in_time_zone('Tokyo'), format: :original %>
+      </div>
+      <% end %>
       <div class="col-md-2">
         <%= ai.status_i18n %>
       </div>
@@ -32,4 +41,5 @@
     </div>
     <hr>
   <% end %>
+  <%= paginate @ais %>
 </div>

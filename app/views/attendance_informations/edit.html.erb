@@ -1,0 +1,25 @@
+<h3>修正ページ</h3>
+<div>
+  <div class="col">
+    修正前
+
+ <div class="col">
+          <%= l @ai.time_in.in_time_zone('Tokyo'), format: :original %>
+        </div>
+        <div class="col">
+          <%= l @ai.time_out.in_time_zone('Tokyo'), format: :original %>
+        </div>
+</div>
+ </div>
+
+ <%= form_with model: @ai, local: true do |f| %>
+  <div>
+  <label class="control-label" for="">出勤時間</label>
+  <%= f.datetime_field :temp_time_in, value: @ai.time_in.strftime('%Y-%m-%dT%T') %>
+  </div>
+  <div>
+  <label class="control-label" for="">退勤時間</label>
+  <%= f.datetime_field :temp_time_out, value: @ai.time_out.strftime('%Y-%m-%dT%T') %>
+  </div>
+  <%= f.submit '修正申請', class: 'btn btn-primary' %>
+<% end %>
