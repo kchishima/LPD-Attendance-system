@@ -1,4 +1,6 @@
 <div class="container">
+  <%= link_to "前の月のリンク",admins_attendance_informations_path(month:@month.prev_month) %>
+　<%= link_to "次の月のリンク",admins_attendance_informations_path(month:@month.next_month) %>
 
   <% @ais.each do |ai| %>
 

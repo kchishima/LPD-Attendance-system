@@ -1,8 +1,48 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container-fluid">
-  <div class="container">
-    <h1 class="display-4">Fluid jumbotron</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-  </div>
+<!--<div class="jumbotron jumbotron-fluid">-->
+<!--  <div class="container-fluid">-->
+<!--  <div class="container">-->
+<!--    <h1 class="display-4">Fluid jumbotron</h1>-->
+<!--    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>-->
+<!--  </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div class="container py-4">-->
+<!--    <div class="p-5 mb-4 bg-light rounded-3">-->
+<!--      <div class="container-fluid py-5">-->
+<!--        <h1 class="display-5 fw-bold">LPD Attendance System</h1>-->
+<!--        <button class="btn btn-primary btn-lg" type="button">Example button</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--      </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--  </div>-->
+
+<div class="container">
+  <div class="row">
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+       <br>
+      <h1 class="text-center">ようこそ <i class="fas fa-handshake"></i><strong>LPDへ</strong>  !!</h1>
+      <div class="btn-wrapper col-10 mx-auto">
+        <div class="row">
+        <% if member_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "Memberログアウト", destroy_member_session_path, method: :delete, class: 'nav-link' %>
+            </li>
+           </div>
+          <% else %>
+            <div class="nav-item">
+              <%= link_to "Adminログイン", new_admin_session_path, class: 'nav-link' %>
+            </div>
+             <div class="row">
+            <div class="nav-item">
+              <%= link_to "Memberログイン", new_member_session_path, class: 'nav-link' %>
+            </div>
+          <% end %>
+          </div>
+      </div>
+    </div>
   </div>
 </div>

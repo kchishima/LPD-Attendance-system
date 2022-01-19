@@ -3,6 +3,10 @@ class Admins::AttendanceInformationsController < ApplicationController
 
   def index
     @ais = AttendanceInformation.all.page(params[:page]).per(10).order('updated_at DESC')
+
+    @month = params[:month] ? Date.parse(params[:month]) : Time.zone.today
+    @orders = AttendanceInformation.where(updated_at: @month.all_month)
+
   end
 
   def update
