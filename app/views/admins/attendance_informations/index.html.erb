@@ -18,8 +18,11 @@
         <%= l ai.time_in.in_time_zone('Tokyo'), format: :original %>
       </div>
       <div class="col-md-5">
-        <%= l ai.time_out.in_time_zone('Tokyo'), format: :original %>
+        <% if !ai.time_out.nil? %>
+          <%= l ai.time_out.in_time_zone('Tokyo'), format: :original %>
+        <% end %>
       </div>
+
       <% if !ai.temp_time_in.nil? %>
       <div class="col-md-5">
         <%= l ai.temp_time_in.in_time_zone('Tokyo'), format: :original %>

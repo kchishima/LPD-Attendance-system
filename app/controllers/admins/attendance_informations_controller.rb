@@ -1,12 +1,15 @@
 class Admins::AttendanceInformationsController < ApplicationController
   before_action :authenticate_admin!
+  def show
+    @ai = AttendanceInformation.find(params[:id])
+  end
 
   def index
-    @ais = AttendanceInformation.all.page(params[:page]).per(10).order('updated_at DESC')
+    @month = params[:month] ? Time.parse(params[:month]) : Time.zone.today
+    start_month = @month.beginning_of_month
+    end_month = @month.end_of_month
 
-    @month = params[:month] ? Date.parse(params[:month]) : Time.zone.today
-    @orders = AttendanceInformation.where(updated_at: @month.all_month)
-
+    @ais = AttendanceInformation.where(time_in: start_month..end_month).page(params[:page]).per(10).order('updated_at DESC')
   end
 
   def update

@@ -16,10 +16,12 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+//= require fullcalendar
+//= require moment
+//= require_tree.
 
     document.addEventListener('turbolinks:load', function() {
-        if ($('#RealtimeClockArea').length) {
+        if (('#RealtimeClockArea').length) {
             setInterval('showClock()',100);
         }
     });
@@ -31,5 +33,13 @@
       var nowSec  = nowTime.getSeconds(); // 秒を抜き出す
       var msg = ( '00' + nowHour ).slice( -2 ) + ":" + ( '00' + nowMin ).slice( -2 ) + ":" + ( '00' + nowSec ).slice( -2 );
       // document.getElementById("RealtimeClockArea").innerHTML = msg;
-      $('#RealtimeClockArea').text(msg);
+      ('#RealtimeClockArea').text(msg);
     }
+
+    (function () {
+
+  ('#calendar').fullCalendar({
+
+  });
+
+});

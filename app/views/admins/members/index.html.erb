@@ -19,7 +19,10 @@
     <% @members.each do |member| %>
         <tr>
             <td><%= member.member_id %></td>
-            <td><%= member.first_name + member.last_name %></td>
+            <td><%= link_to admins_member_path(member) do %>
+            <%= member.first_name + member.last_name %>
+            <% end %>
+            </td>
             <td><%= member.email %></td>
         </tr>
     <% end %>
