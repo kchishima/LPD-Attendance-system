@@ -1,7 +1,7 @@
 <div class="container">
 <h2>一言</h2>
 
-<%= form_with model: @reason, url: admins_attendance_informations_path(ai_id: params[:ai_id]), method: :post, local: true do |f| %>
+<%= form_with model: @reason, url: admins_attendance_informations_path(ai_id: params[:ai_id], member_id: params[:member_id]), method: :post, local: true do |f| %>
 <%= f.label :reason %>
 <%= f.text_area :reason %>
 <%= f.submit '保存' %>

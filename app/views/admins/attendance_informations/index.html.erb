@@ -1,50 +1,20 @@
 <div class="container">
-  <%= link_to "前の月のリンク",admins_attendance_informations_path(month:@month.prev_month) %>
-　<%= link_to "次の月のリンク",admins_attendance_informations_path(month:@month.next_month) %>
-
-  <% @ais.each do |ai| %>
-
-    <div class="row mb-2">
-      <div class="col-md-3">
-        <%= "#{ai.member.first_name} #{ai.member.last_name}" %>
-      </div>
-      <div class="col-md-9">
-        <%= ai.member.member_id %>
-      </div>
+  <h2>打刻一覧詳細ページ</h2>
+  <div class="row mb-2">
+    <div class="col-md-3">
+      <%= "#{@member.first_name} #{@member.last_name}" %>
     </div>
-
-    <div class="row">
-      <div class="col-md-5">
-        <%= l ai.time_in.in_time_zone('Tokyo'), format: :original %>
-      </div>
-      <div class="col-md-5">
-        <% if !ai.time_out.nil? %>
-          <%= l ai.time_out.in_time_zone('Tokyo'), format: :original %>
-        <% end %>
-      </div>
-
-      <% if !ai.temp_time_in.nil? %>
-      <div class="col-md-5">
-        <%= l ai.temp_time_in.in_time_zone('Tokyo'), format: :original %>
-      </div>
-      <div class="col-md-5">
-        <%= l ai.temp_time_out.in_time_zone('Tokyo'), format: :original %>
-      </div>
-      <% end %>
-      <div class="col-md-2">
-        <%= ai.status_i18n %>
-      </div>
+    <div class="col-md-9">
+      <%= @member.member_id %>
     </div>
-
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <% if ai.status == "applying" %>
-        <%= link_to '承認', admins_attendance_information_path(id: ai.id, status: 'approval'), class: 'btn btn-info btn-sm', method: :patch %>
-        <%= link_to '非承認', admins_attendance_information_path(id: ai.id, status: 'nonapproval'), class: 'btn btn-primary btn-sm',  method: :patch %>
-    　<% else %>
-         <%= link_to '承認待ち', admins_attendance_information_path(id: ai.id, status: 'applying'), class: 'btn btn-danger btn-sm', method: :patch %>
-  　　<% end %>
-    </div>
-    <hr>
-  <% end %>
-  <%= paginate @ais %>
+  </div>
+  <div id="calendar"></div>
 </div>
+
+<script>
+  $('#calendar').fullCalendar({
+    events: '/admins/attendance_informations.json?member_id=<%= params[:member_id] %>',
+    timeFormat: 'HH:mm',
+    displayEventEnd: true,
+  });
+</script>

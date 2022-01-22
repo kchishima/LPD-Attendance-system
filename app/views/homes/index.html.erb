@@ -26,19 +26,20 @@
        <br>
       <h1 class="text-center">ようこそ <i class="fas fa-handshake"></i><strong>LPDへ</strong>  !!</h1>
       <div class="btn-wrapper col-10 mx-auto">
-        <div class="row">
         <% if member_signed_in? %>
-            <li class="nav-item">
-              <%= link_to "Memberログアウト", destroy_member_session_path, method: :delete, class: 'nav-link' %>
-            </li>
-           </div>
-          <% else %>
-            <div class="nav-item">
-              <%= link_to "Adminログイン", new_admin_session_path, class: 'nav-link' %>
+            <div class="row">
+              <div class="col-md-6 mx-auto">
+                <%= link_to "Memberログアウト", destroy_member_session_path, method: :delete, class: 'btn btn-danger btn-block' %>
+              </div>
             </div>
-             <div class="row">
-            <div class="nav-item">
-              <%= link_to "Memberログイン", new_member_session_path, class: 'nav-link' %>
+          <% else %>
+            <div class="row">
+              <div class="col-md-6">
+                <%= link_to "Adminログイン", new_admin_session_path, class: 'btn btn-primary btn-block' %>
+              </div>
+              <div class="col-md-6">
+                <%= link_to "Memberログイン", new_member_session_path, class: 'btn btn-primary btn-block' %>
+              </div>
             </div>
           <% end %>
           </div>

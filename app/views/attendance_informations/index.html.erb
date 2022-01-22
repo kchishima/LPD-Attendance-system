@@ -1,28 +1,31 @@
 <div class="container">
      <% @ais.each do |ai| %>
-    <div class="row-">
+    <div class="row">
 
-        <div class="col">
-          <%= l ai.time_in.in_time_zone('Tokyo'), format: :original %>
+        <div class="col-md-4">
+          <small>
+            <%= l ai.time_in.in_time_zone('Tokyo'), format: :original %>
+          </small>
         </div>
-        <div class="col">
-          <%= l ai.time_out.in_time_zone('Tokyo'), format: :original %>
+        <div class="col-md-4">
+          <% unless ai.time_out.nil? %>
+            <small>
+              <%= l ai.time_out.in_time_zone('Tokyo'), format: :original %>
+            </small>
+          <% else %>
+            <span class="text-danger">未打刻</span>
+          <% end %>
         </div>
-        <div class="col">
-        <%= link_to attendance_information_path(ai) do %>
-        <%= ai.status_i18n %>
-        <% end %>
+        <div class="col-md-2">
+          <%= link_to attendance_information_path(ai) do %>
+            <%= ai.status_i18n %>
+          <% end %>
         </div>
-        <div class="col"></div>
+        <div class="col-md-2">
+           <%= link_to "修正",edit_attendance_information_path(ai) %>
+        </div>
     </div>
-   　 <%= link_to "修正",edit_attendance_information_path(ai) %>
+
 
     <% end %>
-    <!--<% @ais.each do |ai| %>-->
-    <!--    <%= l ai.time_in.in_time_zone('Tokyo'), format: :original %>-->
-    <!--   <%= l ai.time_out.in_time_zone('Tokyo'), format: :original %>-->
-    <!--    <%= link_to attendance_information_path(ai) do %>-->
-    <!--    <%= ai.status_i18n %>-->
-    <!--    <% end %>-->
-    <!--<% end %>-->
 </div>
