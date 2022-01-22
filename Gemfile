@@ -69,3 +69,7 @@ gem 'momentjs-rails'
 gem 'rails-i18n'
 gem 'enum_help'
 gem 'kaminari'
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
