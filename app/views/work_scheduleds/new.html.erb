@@ -1,0 +1,22 @@
+希望時間入力画面
+<div class="container">
+   <%= link_to "←",new_work_scheduled_path(date: @yesterday) %>
+   <%= @date %>
+   <%= link_to "→",new_work_scheduled_path(date: @tomorrow) %>
+   <% @works.created_at = @date %>
+   <div class="row">
+    <%= form_with model: @work_scheduled, url: work_scheduleds_path , local:true do |f| %>
+    <h4>開始時間</h4>
+    <%# binding.pry %>
+    <%#= f.time_select :time_in %>
+    <%= f.datetime_select :time_in , {default: @works.created_at} %>
+    <h4>終了時間</h4>
+    <%#= f.time_select :time_out %>
+    <%# binding.pry%>
+    <%= f.datetime_select :time_out , {default: @works.created_at} %>
+    <%= f.hidden_field :date , :value => @date %>
+     <%= f.submit '保存' %>
+    <% end %>
+</div>
+</div>
+

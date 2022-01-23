@@ -12,6 +12,7 @@ class Admins::AttendanceInformationsController < ApplicationController
     # @ais = AttendanceInformation.where(time_in: start_month..end_month).page(params[:page]).per(10).order('updated_at DESC')
     @ais = AttendanceInformation.where(member_id: params[:member_id])
     @member = Member.find(params[:member_id])
+    # binding.pry
   end
 
   def update

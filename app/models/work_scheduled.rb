@@ -1,0 +1,2 @@
+class WorkScheduled < ApplicationRecord
+end

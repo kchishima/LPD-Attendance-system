@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_19_101344) do
+ActiveRecord::Schema.define(version: 2022_01_23_100728) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -74,6 +74,14 @@ ActiveRecord::Schema.define(version: 2022_01_19_101344) do
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["member_id"], name: "index_members_on_member_id", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
+  end
+
+  create_table "work_scheduleds", force: :cascade do |t|
+    t.string "member_id", null: false
+    t.datetime "time_in"
+    t.datetime "time_out"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

@@ -1,0 +1,26 @@
+稼働予定日提出カレンダー
+ <div class="container">
+   <%# binding.pry %>
+   <div id="calendar2"></div>
+ </div>
+
+ <script>
+
+  // $('#calendar2').fullCalendar({
+  //   events: '/work_scheduleds.json?member_id=<%= params[:member_id] %>',
+  //   timeFormat: 'HH:mm',
+  //   displayEventEnd: true,
+  // });
+
+  $('#calendar2').fullCalendar({
+    events: '/work_scheduleds.json?member_id=<%= params[:member_id] %>',
+    timeFormat: 'HH:mm',
+    displayEventEnd: true,
+    selectable: true,
+    navLinks: true,
+    select: function(start, end, jsEvent, view){
+      var date = start.format("YYYY/MM/DD")
+      window.location = "https://206e946cd4aa4ab3a57926e2f963690e.vfs.cloud9.ap-northeast-1.amazonaws.com/work_scheduleds/new" + "?date=" + date
+    },
+  });
+</script>
