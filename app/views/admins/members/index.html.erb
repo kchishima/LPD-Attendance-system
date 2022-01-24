@@ -14,10 +14,10 @@
     <% end %>
     <table class="table table-hover">
         <tr>
-            <th>MEMBER ID</th>
-            <th>NAME</th>
+            <th>メンバー ID</th>
+            <th>名前</th>
             <th>EMAIL</th>
-            <th>ACTIONS</th>
+            <th>打刻カレンダー</th>
         </tr>
         <% @members.each do |member| %>
             <tr>
@@ -29,7 +29,7 @@
                 <td><%= member.email %></td>
                 <td>
                     <%= link_to admins_attendance_informations_path(member_id: member.id) do %>
-                        Calender Edit
+                        <i class="fas fa-calendar-alt"></i>
                     <% end %>
                 </td>
             </tr>

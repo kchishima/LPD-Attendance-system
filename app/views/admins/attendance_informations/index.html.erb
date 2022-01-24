@@ -13,6 +13,11 @@
 
 <script>
   $('#calendar').fullCalendar({
+      // カレンダー上部を年月で表示させる
+    titleFormat: 'YYYY年 M月',
+
+    // 曜日を日本語表示
+    dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'],
     events: '/admins/attendance_informations.json?member_id=<%= params[:member_id] %>',
     timeFormat: 'HH:mm',
     displayEventEnd: true,

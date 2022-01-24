@@ -1,7 +1,7 @@
 class  WorkScheduledsController < ApplicationController
   def new
     @date = params[:date]
-    
+
     @yesterday = Date.parse(@date).yesterday
     @tomorrow = Date.parse(@date).tomorrow
     @work_scheduled = WorkScheduled.new
@@ -23,7 +23,7 @@ class  WorkScheduledsController < ApplicationController
     # @work_scheduled.time_out = params[:work_scheduled][:date] + " "+ time_out["time_out(4i)"]+time_out["time_out(5i)"]
      @work_scheduled.member_id = current_member.id
     # binding.pry
-     
+
      @work_scheduled.save
   redirect_to work_scheduleds_path
   end
@@ -33,7 +33,8 @@ class  WorkScheduledsController < ApplicationController
      # @ais = WorkScheduled.all
      @ais = WorkScheduled.where(member_id: current_member.id)
   end
-
+ 
+  
    def work_scheduled_params
     params.require(:work_scheduled).permit(:time_in, :time_out)
    end

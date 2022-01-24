@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :members, only: [:new, :create, :index, :show, :edit,:update]
     resources :attendance_informations
+    resources :work_scheduleds,only: [:index,:show,:edit,:update]
   end
   resources :members, only: [:show, :update]
 

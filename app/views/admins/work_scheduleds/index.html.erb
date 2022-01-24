@@ -1,0 +1,56 @@
+<h1><%= @month.strftime('%m') %></h1>
+<% [*1..12].each do |month| %>
+<%= link_to "#{month} gatu", admins_work_scheduleds_path(year: 2022, month: month) %>
+<% end %>
+<div class="table-wrap">
+<table class="table">
+<!-- date -->
+<thead>
+<tr>
+<th>
+  name
+</th>
+<% Date.current.all_month.each do |date| %>
+<th><%= date.strftime('%d') %></th>
+<% end %>
+</tr>
+</thead>
+<tbody>
+<% @members_scheduled.each do |scheduled| %>
+<tr>
+  <% scheduled.each do |s| %>
+    <% if s.blank? %>
+     <td></td>
+    <% elsif s.class == String %>
+     <td><%= s %></td>
+    <% else %>
+      <td>
+        <span class="background_cell"><%= link_to s.last,edit_admins_work_scheduled_path(s.first) %></span>
+      </td>
+    <% end  %>
+  <% end %>
+</tr>
+<% end %>
+</tbody>
+</table>
+</div>
+
+<style>
+.table-wrap {
+  overflow-x: scroll;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+}
+.table th,
+.table td {
+  border: 2px solid #eee;
+  padding: 4px 8px;
+}
+
+.background_cell {
+  background-color: #ccc;
+}
+</style>
