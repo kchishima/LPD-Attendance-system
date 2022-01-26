@@ -1,7 +1,9 @@
 <div class="container">
+  <%= link_to "<-#{@base_month.last_month.strftime('%Y年%m月')}", attendance_informations_path(selected_month: @base_month.last_month.strftime('%Y-%m')) %>
+  <%= link_to "#{@base_month.strftime('%Y年%m月')}", attendance_informations_path(selected_month: @base_month.strftime('%Y-%m')) %>
+    <%= link_to "#{@base_month.next_month.strftime('%Y年%m月')}->", attendance_informations_path(selected_month: @base_month.next_month.strftime('%Y-%m')) %>
      <% @ais.each do |ai| %>
     <div class="row">
-
         <div class="col-md-4">
           <small>
             <%= l ai.time_in.in_time_zone('Tokyo'), format: :original %>
@@ -25,7 +27,5 @@
            <%= link_to "修正",edit_attendance_information_path(ai) %>
         </div>
     </div>
-
-
-    <% end %>
+ <% end %>
 </div>
