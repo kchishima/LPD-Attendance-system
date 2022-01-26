@@ -1,6 +1,6 @@
-<h1><%= @month.strftime('%m') %></h1>
+<h1><%= @month.strftime('%Y-%m')  %></h1>
 <% [*1..12].each do |month| %>
-<%= link_to "#{month} 月", admins_work_scheduleds_path(year: 2022, month: month) %>
+<%= link_to "#{month} 月", charts_path(year: 2022, month: month) %>
 <% end %>
 <div class="table-wrap">
 <table class="table">
@@ -19,13 +19,18 @@
 <% @members_scheduled.each do |scheduled| %>
 <tr>
   <% scheduled.each do |s| %>
+    <!-- s.first => member_id, s.last => scheduled_time -->
     <% if s.blank? %>
      <td></td>
     <% elsif s.class == String %>
      <td><%= s %></td>
     <% else %>
       <td>
-        <span class="background_cell"><%= link_to s.last,edit_admins_work_scheduled_path(s.first) %></span>
+        <% if WorkScheduled.find(s.first.to_i).member_id.to_i == current_member.id %>
+        <span class="background_cell"><%= link_to s.last,edit_chart_path(s.first) %></span>
+        <% else %>
+        <span class="background_cell"><%= s.last %></span>
+        <% end %>
       </td>
     <% end  %>
   <% end %>

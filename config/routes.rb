@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :admins
   devise_for :members
   namespace :admins do
@@ -21,8 +22,10 @@ Rails.application.routes.draw do
   # patch '/attendance/:id' => 'attendance_informations#update'
   # get '/attendance_informations' => 'attendance_informations#show'
 
-  resources :work_scheduleds,only: [:index,:new,:create,:edit,:update]
+  resources :work_scheduleds,only: [:index,:new,:create]
   resources :attendance_applications,only: [:index,:show,:new,:create,:edit,:update]
   resources :attendance_informations
+  # get 'charts/index'
+  resources :charts,only: [:index, :edit, :update, :destroy]
 
 end

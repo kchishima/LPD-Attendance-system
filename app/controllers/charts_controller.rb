@@ -1,11 +1,10 @@
-class Admins::WorkScheduledsController < ApplicationController
+class ChartsController < ApplicationController
   def index
     # binding.pry
     @month = Date.parse("#{params[:year]}/#{params[:month]}").in_time_zone("Tokyo")
     @members = Member.all
     @all_scheduled = WorkScheduled.where(time_in: @month.all_month)
     # [[name, nil,nil,12:00~19:00,nil,nil],[name2, nil,nil,...nil]]
-
     @members_scheduled = []
     @members.each do |member|
       work_schedule = []
@@ -30,4 +29,25 @@ class Admins::WorkScheduledsController < ApplicationController
     end
   end
 
+  def edit
+  @work_scheduled = WorkScheduled.find(params[:id])
+  end
+
+  def update
+    @work_scheduled = WorkScheduled.find(params[:id])
+    @work_scheduled.update(work_scheduled_update_params)
+    redirect_to work_scheduleds_path
+  end
+
+  def destroy
+     @work_scheduled = WorkScheduled.find(params[:id])
+     @work_scheduled.destroy
+     redirect_to work_scheduleds_path
+  end
+
+  private
+
+  def work_scheduled_update_params
+    params.require(:work_scheduled).permit(:time_in, :time_out)
+  end
 end

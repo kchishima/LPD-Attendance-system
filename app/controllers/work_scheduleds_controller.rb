@@ -33,8 +33,8 @@ class  WorkScheduledsController < ApplicationController
      # @ais = WorkScheduled.all
      @ais = WorkScheduled.where(member_id: current_member.id)
   end
- 
-  
+
+
    def work_scheduled_params
     params.require(:work_scheduled).permit(:time_in, :time_out)
    end

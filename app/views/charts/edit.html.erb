@@ -1,0 +1,20 @@
+<div class="container">
+ <h3>シフト修正</h3>
+   <div class="row">
+    <%= form_with model: @work_scheduled, url: chart_path(@work_scheduled.id), local: true do |f| %>
+    <h4>開始時間</h4>
+    <%# binding.pry %>
+    <%#= f.time_select :time_in %>
+    <%= f.datetime_select :time_in  %>
+    <h4>終了時間</h4>
+    <%#= f.time_select :time_out %>
+    <%# binding.pry%>
+    <%= f.datetime_select :time_out %>
+     <%= f.submit '修正' %>
+    <% end %>
+</div>
+   <div class=" destroy">
+      <%= link_to "削除", chart_path(@work_scheduled), method: :delete, data: {confirm: "本当にいいですか？"}, class: "btn btn-danger" %>
+   </div>
+</div>
+
