@@ -27,12 +27,30 @@
 
         <% if member_signed_in? %>
           <li class="nav-item">
+            <%= link_to  "打刻履歴", attendance_informations_path,class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "稼働一覧",charts_path(year: Date.current.strftime("%Y"), month: Date.current.strftime("%m")), class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+             <%= link_to "稼働予定日", work_scheduleds_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+             <%= link_to "マイページ", member_path(current_member), class: 'nav-link' %>
+          </li>
+           <li class="nav-item">
             <%= link_to "Memberログアウト", destroy_member_session_path, method: :delete, class: 'nav-link' %>
           </li>
         <% end %>
 
         <% if admin_signed_in? %>
           <li class="nav-item">
+          <%= link_to  "メンバー一覧", admins_members_path,class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "稼働日", admins_work_scheduleds_path(year: Date.current.strftime("%Y"), month: Date.current.strftime("%m")),class: 'nav-link' %>
+            </li>
+              <li class="nav-item">
             <%= link_to "Adminログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
           </li>
         <% end %>
@@ -48,8 +66,6 @@
       </ul>
     </div>
   </nav>
-
-
     <div class="container">
       <% unless flash[:notice].blank? %>
         <p class="notice"><%= flash[:notice] %></p>
@@ -60,6 +76,5 @@
     </div>
 
     <%= yield %>
-
   </body>
 </html>

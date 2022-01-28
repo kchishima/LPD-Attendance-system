@@ -1,6 +1,19 @@
-<h1><%= @month.strftime('%m') %></h1>
+<h1><%= @month.strftime('%Y-%m') %></h1>
+<%
+  select_year = []
+  select_month =[]
+%>
+<% [*2022..2062].each do |year| %>
+<% select_year.push(["#{year}年",year]) %>
+<% end %>
 <% [*1..12].each do |month| %>
-<%= link_to "#{month} 月", admins_work_scheduleds_path(year: 2022, month: month) %>
+<%  select_month.push(["#{sprintf('%02d',month)}月", "#{sprintf('%02d',month)}"]) %>
+<!--<%= link_to "#{month} 月", admins_work_scheduleds_path(year: 2022, month: month) %>-->
+<% end %>
+<%= form_tag(admins_work_scheduleds_path, method: :get) do  %>
+<%= select_tag(:year, options_for_select(select_year, params[:year]), options = {}) %>
+<%= select_tag(:month, options_for_select(select_month, params[:month]), options = {}) %>
+<%= submit_tag "表示" %>
 <% end %>
 <div class="table-wrap">
 <table class="table">

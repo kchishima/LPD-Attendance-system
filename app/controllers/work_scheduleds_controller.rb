@@ -1,7 +1,6 @@
 class  WorkScheduledsController < ApplicationController
   def new
     @date = params[:date]
-
     @yesterday = Date.parse(@date).yesterday
     @tomorrow = Date.parse(@date).tomorrow
     @work_scheduled = WorkScheduled.new

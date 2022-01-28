@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   # get '/attendance_informations' => 'attendance_informations#show'
 
   resources :work_scheduleds,only: [:index,:new,:create]
-  resources :attendance_applications,only: [:index,:show,:new,:create,:edit,:update]
   resources :attendance_informations
   # get 'charts/index'
   resources :charts,only: [:index, :edit, :update, :destroy]
