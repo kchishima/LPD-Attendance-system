@@ -9,13 +9,13 @@ class MembersController < ApplicationController
 
   def update
     @member = Member.find(params[:id])
-    @member.update(password_params)
+    @member.update!(password_params)
     redirect_to member_path(@member)
   end
 
   private
 
   def password_params
-    params.require(:member).permit(:password, :password_confirmation)
+    params.require(:member).permit(:password, :password_confirmation, :image)
   end
 end

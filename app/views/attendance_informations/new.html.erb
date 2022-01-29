@@ -20,12 +20,14 @@
         <div class="row mb-2 mb-md-0">
             <div class="col-md-2">出勤</div>
             <div class="col-md-4"><small><%= l ai.time_in.in_time_zone('Tokyo'), format: :original %></small></div>
+        </div>
+        <div class="row mb-2 mb-md-0">
             <div class="col-md-2">退勤</div>
             <div class="col-md-4">
                 <% unless ai.time_out.nil? %>
                     <small><%= l ai.time_out.in_time_zone('Tokyo'), format: :original %></small>
                 <% else %>
-                    <span class="text-danger">打刻なし</span>
+                    <small class="text-danger">打刻なし</small>
                 <% end %>
             </div>
         </div>

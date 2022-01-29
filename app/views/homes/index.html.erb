@@ -24,20 +24,20 @@
   <div class="row">
     <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
        <br>
-      <h1 class="text-center">ようこそ <i class="fas fa-handshake"></i><strong>LPDへ</strong>  !!</h1>
+      <h1 class="text-center mb-3">ようこそ <i class="fas fa-handshake"></i><strong>LPDへ</strong>  !!</h1>
       <div class="btn-wrapper col-10 mx-auto">
         <% if member_signed_in? %>
             <div class="row">
-              <div class="col-md-6 mx-auto">
+              <div class="col-md-6 mx-auto mb-3">
                 <%= link_to "Memberログアウト", destroy_member_session_path, method: :delete, class: 'btn btn-danger btn-block' %>
               </div>
             </div>
           <% else %>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-6 mb-3">
                 <%= link_to "Adminログイン", new_admin_session_path, class: 'btn btn-primary btn-block' %>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 mb-3">
                 <%= link_to "Memberログイン", new_member_session_path, class: 'btn btn-primary btn-block' %>
               </div>
             </div>

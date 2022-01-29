@@ -4,7 +4,9 @@
  </div>
 
  <script>
-  $('#calendar2').fullCalendar({
+  $(document).on('turbolinks:load', function() {
+    if(!$('#calendar2').hasClass("fc")) {
+ 　　 $('#calendar2').fullCalendar({
     // カレンダー上部を年月で表示させる
     titleFormat: 'YYYY年 M月',
 
@@ -16,9 +18,12 @@
     selectable: true,
     navLinks: true,
     select: function(start, end, jsEvent, view){
+      console.log("hoge")
       var date = start.format("YYYY/MM/DD")
       window.location = "/work_scheduleds/new" + "?date=" + date
     },
+  });
+   }
   });
 </script>
 

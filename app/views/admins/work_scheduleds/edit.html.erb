@@ -13,6 +13,19 @@
      <%= f.submit '修正' %>
     <% end %>
 </div>
+ <script>
+     $(document).on('turbolinks:load', function(){
+  $('#work_scheduled_time_in_1i').change(function() {
+  $('#work_scheduled_time_out_1i').val($('#work_scheduled_time_in_1i').val());
+  });
+  $('#work_scheduled_time_in_2i').change(function() {
+  $('#work_scheduled_time_out_2i').val($('#work_scheduled_time_in_2i').val());
+  });
+  $('#work_scheduled_time_in_3i').change(function() {
+  $('#work_scheduled_time_out_3i').val($('#work_scheduled_time_in_3i').val());
+  });
+  });
+    </script>
    <div class=" destroy">
       <%= link_to "削除", admins_work_scheduled_path(@work_scheduled), method: :delete, data: {confirm: "本当にいいですか？"}, class: "btn btn-danger" %>
    </div>

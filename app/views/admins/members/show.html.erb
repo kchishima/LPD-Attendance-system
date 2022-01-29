@@ -1,74 +1,114 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <h4>登録日</h4>
+    <div class="col-9">
+      <div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <small class="text-black-50">
+       登録日
+      </small>
     </div>
-     <div class="col-md-8">
-     <h4><%= l @member.created_at.in_time_zone('Tokyo'), format: :original %></h4>
-     </div>
+    <div class="col-md-10 mb-2">
+      <%= l @member.created_at.in_time_zone('Tokyo'), format: :original %>
+    </div>
   </div>
   <div class="row">
-    <div class="col-md-4">
-     <h4>id</h4>
+    <div class="col-md-2">
+       <small class="text-black-50">
+       id
+       </small>
     </div>
-    <div class="col-md-8">
-      <h4><%= @member.member_id %></h4>
+    <div class="col-md-10">
+      <%= @member.member_id %>
     </div>
+    </div>
+  <div class="row">
+    <div class="col-md-2">
+      <small class="text-black-50">
+        メールアドレス
+      </small>
+    </div>
+    <div class="col-md-7 mb-2">
+      <%= @member.email %>
     </div>
 
+  </div>
   <div class="row">
-    <div class="col-md-4">
-      <h4>メールアドレス</h4>
+    <div class="col-md-2">
+      <small class="text-black-50">
+        姓
+      </small>
     </div>
-    <div class="col-md-8">
-      <h4><%= @member.email %></h4>
+    <div class="col-md-4 mb-2">
+      <%= @member.first_name %>
+    </div>
+    <div class="col-md-2">
+      <small class="text-black-50">
+        名
+      </small>
+    </div>
+    <div class="col-md-4 mb-2">
+      <%= @member.last_name %>
     </div>
   </div>
-    <div class="row">
-      <div class="col-md-4">
-       <h4>姓</h4>
-      </div>
-      <div class="col-md-8">
-       <h4><%= @member.first_name %></h4>
-      </div>
-     <div class="col-md-4">
-      <h4>名</h4>
+  <div class="row">
+    <div class="col-md-2 mb-2">
+      <small class="text-black-50">
+       セイ
+      </small>
     </div>
-    <div class="col-md-8">
-     <h4><%= @member.last_name %></h4>
+    <div class="col-md-4 mb-3">
+      <%= @member.first_name_kana %>
     </div>
+    <div class="col-md-2 mb-2">
+      <small class="text-black-50">
+        メイ
+      </small>
+    </div>
+    <div class="col-md-4 mb-3">
+      <%= @member.last_name_kana %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <small class="text-black-50">
+        郵便番号
+      </small>
+    </div>
+    <div class="col-md-10 mb-3">
+      <%= @member.postal_code %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <small class="text-black-50">
+        住所
+      </small>
+    </div>
+    <div class="col-md-10 mb-3">
+      <%= @member.address %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <small class="text-black-50">
+        電話番号
+      </small>
+    </div>
+    <div class="col-md-10 mb-3">
+      <%= @member.phone_number %>
+    </div>
+  </div>
+    </div>
+  </div>
+   <div class="col-md-3">
+    <%= attachment_image_tag @member, :image, :fill, 100, 100 , fallback: "neko.jpg", size: "100x100" %>
    </div>
-  <div class="row">
-    <div class="col-md-4">
-      <h4>セイ</h4>
     </div>
-    <div class="col-md-8">
-     <h4><%= @member.first_name_kana %></h4>
-    </div>
-    <div class="col-md-4">
-     <h4>メイ</h4>
-    </div>
-    <div class="col-md-8">
-      <h4><%= @member.last_name_kana %></h4>
-    </div>
-  </div>
-   <div class="row">
-    <div class="col-md-4">
-      <h4>住所</h4>
-    </div>
-    <div class="col-md-8">
-     <h4><%= @member.address %></h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <h4>電話番号</h4>
-    </div>
-    <div class="col-md-8">
-      <h4><%= @member.phone_number %></h4>
-    </div>
-
-  </div>
    <%= link_to '編集', edit_admins_member_path(@member), method: :get %>
+   <%= link_to '削除', admins_member_path(@member), method: :delete, data: {confirm:'本当に削除しますか？'} %>
 </div>
+
+</div>
+
 

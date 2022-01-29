@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :members
   namespace :admins do
-    resources :members, only: [:new, :create, :index, :show, :edit,:update]
+    resources :members, only: [:new, :create, :index, :show, :edit,:update,:destroy]
     resources :attendance_informations
     resources :work_scheduleds,only: [:index,:show,:edit,:update,:destroy]
   end

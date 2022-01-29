@@ -34,6 +34,12 @@ class Admins::MembersController < ApplicationController
     redirect_to admins_member_path(@member)
   end
 
+  def destroy
+    @member = Member.find(params[:id])
+    @member.destroy
+    redirect_to admins_members_path
+  end
+
   private
   def member_params
     params.require(:member).permit(

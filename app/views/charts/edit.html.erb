@@ -1,20 +1,49 @@
 <div class="container">
  <h3>シフト修正</h3>
-   <div class="row">
-    <%= form_with model: @work_scheduled, url: chart_path(@work_scheduled.id), local: true do |f| %>
+ <%= form_with model: @work_scheduled, url: chart_path(@work_scheduled.id), local: true do |f| %>
+   <div class="row mb-3">
+    <div class="col-12">
+     <div class="form-group">
     <h4>開始時間</h4>
     <%# binding.pry %>
     <%#= f.time_select :time_in %>
     <%= f.datetime_select :time_in  %>
+    </div>
+    <div class="form-group">
     <h4>終了時間</h4>
     <%#= f.time_select :time_out %>
     <%# binding.pry%>
     <%= f.datetime_select :time_out %>
-     <%= f.submit '修正' %>
-    <% end %>
+    </div>
+    </div>
+
+    <script>
+     $(document).on('turbolinks:load', function(){
+  $('#work_scheduled_time_in_1i').change(function() {
+  $('#work_scheduled_time_out_1i').val($('#work_scheduled_time_in_1i').val());
+  });
+  $('#work_scheduled_time_in_2i').change(function() {
+  $('#work_scheduled_time_out_2i').val($('#work_scheduled_time_in_2i').val());
+  });
+  $('#work_scheduled_time_in_3i').change(function() {
+  $('#work_scheduled_time_out_3i').val($('#work_scheduled_time_in_3i').val());
+  });
+  });
+    </script>
 </div>
-   <div class=" destroy">
-      <%= link_to "削除", chart_path(@work_scheduled), method: :delete, data: {confirm: "本当にいいですか？"}, class: "btn btn-danger" %>
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-between">
+        <div>
+        <%= link_to "削除", chart_path(@work_scheduled), method: :delete, data: {confirm: "本当にいいですか？"}, class: "btn btn-danger" %>
+        </div>
+        <div>
+         <%= f.submit '修正', class:"btn btn-primary" %>
+        </div>
+      </div>
+    </div>
    </div>
+ <% end %>
 </div>
+
 

@@ -35,7 +35,7 @@ class ChartsController < ApplicationController
 
   def update
     @work_scheduled = WorkScheduled.find(params[:id])
-    @work_scheduled.update(work_scheduled_update_params)
+    @work_scheduled.update!(work_scheduled_update_params)
     redirect_to work_scheduleds_path
   end
 

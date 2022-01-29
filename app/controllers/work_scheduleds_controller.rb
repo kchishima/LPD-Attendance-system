@@ -30,7 +30,7 @@ class  WorkScheduledsController < ApplicationController
   def index
     # binding.pry
      # @ais = WorkScheduled.all
-     @ais = WorkScheduled.where(member_id: current_member.id)
+     @work_scheduleds = WorkScheduled.where(member_id: current_member.id)
   end
 
 

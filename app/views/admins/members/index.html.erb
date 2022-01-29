@@ -16,7 +16,7 @@
             <th>メンバー ID</th>
             <th>名前</th>
             <th>EMAIL</th>
-            <th>打刻カレンダー</th>
+            <th class=>打刻カレンダー</th>
         </tr>
         <% @members.each do |member| %>
             <tr>
@@ -26,10 +26,13 @@
                 <% end %>
                 </td>
                 <td><%= member.email %></td>
-                <td>
+                <td class="d-flex">
                     <%= link_to admins_attendance_informations_path(member_id: member.id) do %>
                         <i class="fas fa-calendar-alt"></i>
                     <% end %>
+                <% if member.applying? %>
+                <div class= "mx-3"><div class="text-danger">申請あり</div></div>
+                <% end %>
                 </td>
             </tr>
         <% end %>
