@@ -39,4 +39,6 @@
          <%= link_to '承認待ち', admins_attendance_information_path(id: @ai.id, status: 'applying'), class: 'btn btn-danger btn-sm', method: :patch %>
   　　<% end %>
     </div>
+
+    <%= link_to '削除', admins_attendance_information_path(@ai.id),class: 'btn btn-danger btn-sm', method: :delete, data: {confirm: "削除しますか？"}  %>
 </div>

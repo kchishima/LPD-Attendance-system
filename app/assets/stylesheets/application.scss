@@ -44,3 +44,38 @@
     display:none
   }
 }
+
+
+.flex-box{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+@media screen and (max-width:499px) {
+.flex-line{
+  width: 100%;
+}
+.flex-box1{
+  width: 100%;
+}
+}
+@media screen and (min-width:801px){
+.flex-line{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+ width: 100%;
+}
+.flex-box1{
+  width: 50%;
+}
+}
+.flex-label{
+  display:inline-block;
+  width:100px;
+}
+
+.flex-line{
+  border-bottom:1px solid black;
+}

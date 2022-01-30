@@ -46,6 +46,13 @@ class Admins::AttendanceInformationsController < ApplicationController
     end
   end
 
+  def destroy
+     @ai = AttendanceInformation.find(params[:id])
+     @member_id = @ai.member_id
+     @ai.destroy
+     redirect_to admins_attendance_informations_path(member_id: @member_id)
+  end
+
   private
 
   def approval_history_params
