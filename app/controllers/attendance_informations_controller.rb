@@ -5,11 +5,11 @@ class AttendanceInformationsController < ApplicationController
     params[:selected_month] = Date.today.strftime('%Y-%m') unless params[:selected_month].present?
     @ais = AttendanceInformation.where(member_id: current_member.id).reverse
     #params[:selected_month] = '2022-01'
-    if Rails.env.production?
-      @ais=  AttendanceInformation.where("DATE_FORMAT('%Y-%m',time_in)='#{params[:selected_month]}'").where(member_id: current_member.id).reverse
-    else
+    # if Rails.env.production?
+    #   @ais=  AttendanceInformation.where("DATE_FORMAT('%Y-%m',time_in)='#{params[:selected_month]}'").where(member_id: current_member.id).reverse
+    # else
       @ais=  AttendanceInformation.where("strftime('%Y-%m',time_in)='#{params[:selected_month]}'").where(member_id: current_member.id).reverse
-    end
+    # end
     ## pp params[:selected_month]
     yymmdd = params[:selected_month].split('-')
     ## pp yymmdd
