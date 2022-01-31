@@ -3,21 +3,36 @@
  <%= form_with model: @work_scheduled, url: chart_path(@work_scheduled.id), local: true do |f| %>
    <div class="row mb-3">
     <div class="col-12">
-     <div class="form-group">
-    <h4>開始時間</h4>
-    <%# binding.pry %>
-    <%#= f.time_select :time_in %>
-    <%= f.datetime_select :time_in  %>
+     <div class="form-grop">
+       <div class="table-responsive">
+       <table class="">
+        <tr>
+          <td nowrap class="text-right"><h4>開始時間</h4></td>
+          <td nowrap class="text-right"><h4>終了時間</h4></td>
+        </tr>
+          <td nowrap ><%= f.datetime_select :time_in  %></td>
+          <td nowrap class="text-right"><%= f.datetime_select :time_out, datetime_separator:'　' %></td>
+        </tr>
+        <tr>
+          <td>
+            <%= link_to "削除", chart_path(@work_scheduled), method: :delete, data: {confirm: "本当にいいですか？"}, class: "btn btn-danger" %>
+          </td>
+          <td class="text-right">
+            <%= f.submit '修正', class:"btn btn-primary" %>
+          </td>
+        </tr>
+        </table>
+        </div>
+     </div>
     </div>
-    <div class="form-group">
-    <h4>終了時間</h4>
-    <%#= f.time_select :time_out %>
-    <%# binding.pry%>
-    <%= f.datetime_select :time_out %>
-    </div>
-    </div>
+  </div>
+ <% end %>
+</div>
+<script>
+    $('#work_scheduled_time_out_1i').css('display', 'none');
+    $('#work_scheduled_time_out_2i').css('display', 'none');
+    $('#work_scheduled_time_out_3i').css('display', 'none');
 
-    <script>
      $(document).on('turbolinks:load', function(){
   $('#work_scheduled_time_in_1i').change(function() {
   $('#work_scheduled_time_out_1i').val($('#work_scheduled_time_in_1i').val());
@@ -29,21 +44,6 @@
   $('#work_scheduled_time_out_3i').val($('#work_scheduled_time_in_3i').val());
   });
   });
-    </script>
-</div>
-  <div class="row">
-    <div class="col-12">
-      <div class="d-flex justify-content-between">
-        <div>
-        <%= link_to "削除", chart_path(@work_scheduled), method: :delete, data: {confirm: "本当にいいですか？"}, class: "btn btn-danger" %>
-        </div>
-        <div>
-         <%= f.submit '修正', class:"btn btn-primary" %>
-        </div>
-      </div>
-    </div>
-   </div>
- <% end %>
-</div>
+</script>
 
 
