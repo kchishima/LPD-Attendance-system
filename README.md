@@ -34,8 +34,9 @@
 出勤予定日を確認する際に利用できます。
 
 ## 設計書
-
+https://docs.google.com/spreadsheets/d/12NNM9l0isBZ0mG0ocYv5M6nTJ4HgEJk6uOF6YYme27I/edit#gid=1031934256
 ## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1vx_4N4Fjl2ayutJkqilFwpCEg5kLNl3J5grHaSGgOxA/edit#gid=0
 
 ## 開発環境
 
